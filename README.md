@@ -10,3 +10,5 @@ Webサイトは、[http://quiz-sample.rhymof.net](http://quiz-sample.rhymof.net)
 ## LICENSE
 
 MIT
+
+[prismjsのライセンス](https://github.com/PrismJS/prism/blob/master/LICENSE)
