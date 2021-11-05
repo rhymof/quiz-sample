@@ -1,0 +1,96 @@
+:root {
+  /*
+    cssでは変数が使える。
+    変数の値を変えれば画面全体の色を変えられるので便利。
+    色は私の趣味。
+  */
+  --color-background: #040830;
+  --color-background-bright: #08104A;
+  --color-accent: #EE9D19;
+  --color-text: #D2DBD2;
+  --color-link: #E0C423;
+  --color-border: #5BA2DF;
+}
+
+html {
+  /*
+    var()で変数を呼び出せる。
+  */
+  background-color: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+body {
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-accent);
+  /*
+    remはhtmlの文字サイズを基準として大きさを指定する単位。
+  */
+  margin-top: 1rem;
+  /*
+    fontについてこだわるならちゃんと指定すること。
+    今回は煩雑になるので指定していない。
+  */
+  font-family: serif;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: 1.7rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+a {
+  color: var(--color-link);
+}
+
+a:hover {
+  color: var(--color-accent)
+}
+
+ul {
+  padding: 0;
+}
+
+/*
+  ここで大きな画面で見たときの表示を制限している。
+*/
+.container {
+  max-width: 960px;
+  padding: 0.3rem;
+  margin: 0 auto;
+}
+
+#result-box {
+  background-color: var(--color-background-bright);
+  border: 1px solid var(--color-border);
+  margin-top: 2rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+#result-box h2 {
+  margin-top: 0;
+}
+
+#result {
+  font-size: 1.5rem;
+}
+
+/*
+  今回は変更していないがラジオボタンのデザインを変えたくなったら、
+  input[type=radio] {}
+  これに書く。
+*/

@@ -1,0 +1,268 @@
+<html>
+  <head>
+    <!-- 文字コードの指定 これがないと文字化けすることがある -->
+    <meta charset="utf8">
+    <!--
+      この部分が重要でこれがないとスマホで異常にに縮小して表示される。
+    -->
+    <meta name="viewport" content="width=device-width">
+    <!--
+      Twitterカードを表示したければ以下のように書くこと。
+      ツイートしたときにどう表示されるか？というのいうのをコントロールしている。
+      MITで配布できる画像がないため今回はコメントアウトしている。
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:creator" content="@rhymee_ww" />
+      <meta property="og:url" content="http://quiz-sample.rhymof.net/" />
+      <meta property="og:title" content="ソースコードからプログラミング言語を当てるクイズ！" />
+      <meta property="og:image" content="http://quiz-sample.rhymof.net/eyecatch.png">
+    -->
+    <!--
+      cssの読み込み
+      ソースコードの表示にprismjsというライブラリを使用している。
+      https://prismjs.com/
+      ここからダウンロードできる。
+      reset.cssというものを使用してブラウザ間の差異を吸収する場合が多いが今回は使用していない。
+    -->
+    <link href="prism.css" rel="stylesheet" >
+    <link href="index.css" rel="stylesheet" >
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <h1>ソースコードからプログラミング言語を当てるクイズ！</h1>
+        <p>
+          ソースコードからそのコードがなんの言語で書かれているかを当ててください。<br/>
+          全部で10問あります。<br/>
+          中にはプログラミング言語でないものもあるかもしれません。<br/>
+          ソースコードのライセンスは<a href="./#license">末尾</a>にまとめて表示します。<br/>
+          ソースコードは一部であり、コメントはすべて削除しています。
+        </p>
+        <h2>第一問</h2>
+        <pre>
+          <!--
+            インデントが崩れているのはソースコードを表示するため仕方がない。
+            初学者向けの題材としては良くなかった可能性がある。
+          -->
+          <code class="language-go">
+type Reader interface {
+  Read(p []byte) (n int, err error)
+}
+          </code>
+        </pre>
+        <form id="quiz1">
+          <!--
+            inputでラジオボタンを作成している。
+            labelタグで囲うことで文字をクリックしてもラジオボタンをチェックできるようになる。
+            brタグよりliタグを使ったほうがきれいかもしれない。
+          -->
+          <label><input type="radio" name="quiz1" value="correct">Go</label><br />
+          <label><input type="radio" name="quiz1" value="wrong">Swift</label><br />
+          <label><input type="radio" name="quiz1" value="wrong">Kotlin</label><br />
+          <label><input type="radio" name="quiz1" value="wrong">Rust
+        </form>
+        <h2>第二問</h2>
+        <pre>
+          <code class="language-kotlin">
+public class String : Comparable<String>, CharSequence {
+  companion object {}
+  
+  public operator fun plus(other: Any?): String
+
+  public override val length: Int
+
+  public override fun get(index: Int): Char
+
+  public override fun subSequence(startIndex: Int, endIndex: Int): CharSequence
+
+  public override fun compareTo(other: String): Int
+}
+          </code>
+        </pre>
+        <form id="quiz2">
+          <label><input type="radio" name="quiz2" value="wrong">Java</label><br />
+          <label><input type="radio" name="quiz2" value="wrong">Scala</label><br />
+          <label><input type="radio" name="quiz2" value="correct">Kotlin</label><br />
+          <label><input type="radio" name="quiz2" value="wrong">Rust</label>
+        </form>
+        <h2>第三問</h2>
+        <pre>
+          <code class="language-python">
+def is_broken_pipe_error():
+  exc_type, _, _ = sys.exc_info()
+  return issubclass(exc_type, (
+    BrokenPipeError,
+    ConnectionAbortedError,
+    ConnectionResetError,
+  ))
+          </code>
+        </pre>
+        <form id="quiz3">
+          <label><input type="radio" name="quiz3" value="wrong">Ruby</label><br />
+          <label><input type="radio" name="quiz3" value="wrong">PHP</label><br />
+          <label><input type="radio" name="quiz3" value="wrong">Perl</label><br />
+          <label><input type="radio" name="quiz3" value="correct">Python</label>
+        </form>
+        <h2>第四問</h2>
+        <pre>
+          <code class="language-smalltalk">
+{ #category : #accessing }
+BIPrettyPrinterContext >> formatCommentWithStatements [
+  ^ formatCommentWithStatements
+]
+          </code>
+        </pre>
+        <form id="quiz4">
+          <label><input type="radio" name="quiz4" value="wrong">Common Lisp</label><br />
+          <label><input type="radio" name="quiz4" value="wrong">Prolog</label><br />
+          <label><input type="radio" name="quiz4" value="correct">SmallTalk</label><br />
+          <label><input type="radio" name="quiz4" value="wrong">Scala</label>
+        </form>
+        <h2>第五問</h2>
+        <pre>
+          <code class="language-vim">
+command! -nargs=0 MANPAGER call s:ManPager() | delcommand MANPAGER
+          </code>
+        </pre>
+        <form id="quiz5">
+          <label><input type="radio" name="quiz5" value="wrong">Shell</label><br />
+          <label><input type="radio" name="quiz5" value="wrong">TypeScript</label><br />
+          <label><input type="radio" name="quiz5" value="correct">VimScript</label><br />
+          <label><input type="radio" name="quiz5" value="wrong">Common Lisp</label>
+        </form>
+        <h2>第六問</h2>
+        <pre>
+          <!--
+            &lt; <- みたいなものはエスケープと呼ぶ。
+            小なり記号(<)をhtmlタグの開始だとブラウザが勘違いするのを防ぐための処理。
+          -->
+          <code class="language-javascript">
+const NotFoundPage = () =&gt; (
+  &lt;Layout&gt;
+    &lt;Seo title=&quot;404: Not found&quot; /&gt;
+    &lt;h1&gt;404: Not Found&lt;/h1&gt;
+    &lt;p&gt;You just hit a route that doesn&amp;#39;t exist... the sadness.&lt;/p&gt;
+  &lt;/Layout&gt;
+)
+          </code>
+        </pre>
+        <form id="quiz6">
+          <label><input type="radio" name="quiz6" value="correct">JavaScript</label><br />
+          <label><input type="radio" name="quiz6" value="wrong">TypeScript</label><br />
+          <label><input type="radio" name="quiz6" value="wrong">CoffeeScript</label><br />
+          <label><input type="radio" name="quiz6" value="wrong">HTML</label>
+        </form>
+        <h2>第七問</h2>
+        <pre>
+          <code class="language-asm6502">
+BOOTLOADER__execute:
+  sei
+  jsr LCD__clear_video_ram
+  lda #&lt;message7
+  ldy #&gt;message7
+  jsr LCD__print
+  jmp PROGRAM_LOCATION 
+          </code>
+        </pre>
+        <form id="quiz7">
+          <label><input type="radio" name="quiz7" value="wrong">6800 Assembly</label><br />
+          <label><input type="radio" name="quiz7" value="correct">6502 Assembly</label><br />
+          <label><input type="radio" name="quiz7" value="wrong">65C02 Assembly</label><br />
+          <label><input type="radio" name="quiz7" value="wrong">65C812 Assembly</label>
+        </form>
+        <h2>第八問</h2>
+        <pre>
+          <code class="language-lisp">
+(defmethod initialize-instance :after ((buffer web-buffer) &key)
+  (when (expand-path (cookies-path buffer))
+    (ensure-parent-exists (expand-path (cookies-path buffer)))))
+          </code>
+        </pre>
+        <form id="quiz8">
+          <label><input type="radio" name="quiz8" value="wrong">COBOL</label><br />
+          <label><input type="radio" name="quiz8" value="wrong">C</label><br />
+          <label><input type="radio" name="quiz8" value="correct">Common Lisp</label><br />
+          <label><input type="radio" name="quiz8" value="wrong">Erlang</label>
+        </form>
+        <h2>第九問</h2>
+        <pre>
+          <code class="language-toml">
+[build]
+  base    = ""
+  publish = "fixtures/dom/build"
+  command = "yarn build --type=UMD_DEV && cd fixtures/dom/ && yarn && yarn prestart && yarn build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+          </code>
+        </pre>
+        <form id="quiz9">
+          <label><input type="radio" name="quiz9" value="wrong">YAML</label><br />
+          <label><input type="radio" name="quiz9" value="correct">TOML</label><br />
+          <label><input type="radio" name="quiz9" value="wrong">JSON</label><br />
+          <label><input type="radio" name="quiz9" value="wrong">Dockerfile</label>
+        </form>
+        <h2>第十問</h2>
+        <pre>
+          <code class="language-dart">
+void main() =>
+  runApp(
+    const Center(
+      child:
+        Text('Hello, world!',
+          key: Key('title'),
+          textDirection: TextDirection.ltr,
+        ),
+    ),
+  );
+          </code>
+        </pre>
+        <form id="quiz10">
+          <label><input type="radio" name="quiz10" value="wrong">Java</label><br />
+          <label><input type="radio" name="quiz10" value="wrong">JavaScript</label><br />
+          <label><input type="radio" name="quiz10" value="wrong">Rust</label><br />
+          <label><input type="radio" name="quiz10" value="correct">Dart</label>
+        </form>
+        <div>
+          <h2>回答を投稿する</h2>
+          <button id="submit-button">回答する</button>
+        </div>
+        <div id="result-box">
+          <h2>結果</h2>
+          <div id="result"></div>
+          <div id="tweet"></div>
+        </div>
+        <h2>このサイトについて</h2>
+        <p>
+          このサイトはHTML, CSS, JavaScript初学者向けのクイズサイトサンプルです。<br />
+          <a href="https://github.com/rhymof/quiz-sample">github.com/rhymof/quiz-sample</a>のリポジトリからソースコードを見ることができます。<br />
+          おかしな点があれば、IssueやPRをお待ちしています。
+        </p>
+        <h3 id="license">ソースコードのライセンス</h3>
+        <details><summary>開く</summary>
+          <ul>
+            <li><a href="https://github.com/golang/go/blob/master/LICENSE">go(go)</a></li>
+            <li><a href="https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt">kotlin(kotlin)</a></li>
+            <li><a href="https://github.com/django/django/blob/main/LICENSE">django(python)</a></li>
+            <li><a href="https://github.com/pharo-project/pharo/blob/Pharo10/LICENSE">pharo(smalltalk)</a></li>
+            <li><a href="https://github.com/vim/vim/blob/master/LICENSE">vim(vim)</a></li>
+            <li><a href="https://github.com/gatsbyjs/gatsby-starter-default/blob/master/LICENSE">gatsby-starter-default(JavaScript)</a></li>
+            <li><a href="https://github.com/janroesner/sixty5o2/blob/master/LICENSE">sixty5o2(6502 accembly)</a></li>
+            <li><a href="https://github.com/atlas-engineer/nyxt/blob/master/licenses/SOURCE-LICENSE">nxyt(common lisp)</a></li>
+            <li><a href="https://github.com/facebook/react/blob/main/netlify.toml">React(設定ファイルとして使用されているtoml)</a></li>
+            <li><a href="https://github.com/flutter/flutter/blob/master/LICENSE">Flutter(Dart)</a></li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    <!--
+      javascriptの読み込み
+      順番に注意すること
+      CDNというものを使用しており、近くのサーバーからjQueryのソースコードを読み込める。
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="prism.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
